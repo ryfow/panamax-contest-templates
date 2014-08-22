@@ -11,9 +11,11 @@ documentation: |-
 
   In this application, the Jenkins Master's HTTP port is mapped to
   port 9080. To access the application, Port 9080 will need to be
-  available. In Virtualbox, this means going into the machine
-  settings network tab, clicking "Port Forwarding" and adding a
-  forward from 127.0.0.1:9080 to Guest:9080.
+  mapped to the host machine. In Virtualbox, this means going into the
+  machine settings network tab, clicking "Port Forwarding" and adding
+  a forward from 127.0.0.1:9080 to Guest:9080. Once the application is
+  running and the port is mapped, Jenkins will be available via web
+  browser at http://<localhost or IP>:9080/
 
   This template defaults to creating a Jenkins Master and two Jenkins Slaves. Adding
   additional slaves involves a few steps.
@@ -21,12 +23,17 @@ documentation: |-
   1. In Panamax, click the "Add a Service" button in the "Jenkins with Slaves" Application
   1. In the "Search Images" dialog, search for "ryfow/docker-jenkins-slave"
   1. Click the "Add to App" link in the images results
-  1. Click on the newly-formed Service in the "Application Services" section of the Application
+  1. Click on the newly formed Service in the "Application Services" section of the Application
   1. Add a "Service Link," mapping "ryfow_jenkins_latest" to "jenkins"
   1. Add an Environment Variable mapping "SLAVE_NAME" to your new Jenkins Slave's name.
   1. Add the slave in Jenkins via the "Manage Jenkins" > "Manage Nodes" interface, making
      sure that the Slave Name matches the Panamax SLAVE_NAME environment variable.
-  
+
+  System Requirements: 2 cores and 4GB of RAM
+
+  If everything is running correctly, http://<localhost or IP>:9080 will bring up the Jenkins
+  web interface and there will be four idle executors listed in the "Build Executor Status"
+  section. Two "master" executors, one "slave1" executor, and one "slave2" executor.
 images:
 - name: ryfow_jenkins_latest
   source: ryfow/jenkins:latest
