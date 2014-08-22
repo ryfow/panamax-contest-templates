@@ -4,7 +4,7 @@ description: Jenkins Continuous Integration Server
 keywords: jenkins
 type: Java
 documentation: |-
-  The Jenkins Continuous Integration (CI) Server is a great excersize of the
+  The Jenkins Continuous Integration (CI) Server is a great exersize of the
   Docker and Panamax systems because it involves distributed application execution
   and coordination. There is one Jenkins Master server, and many Jenkins Slaves that
   are linked to the master for discovery and and workload negotiation.
