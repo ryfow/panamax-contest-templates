@@ -1,0 +1,58 @@
+---
+name: Jenkins
+description: Jenkins Continuous Integration Server
+keywords: jenkins
+type: Java
+documentation: |-
+  The Jenkins Continuous Integration (CI) Server is a great excersize of the
+  Docker and Panamax systems because it involves distributed application execution
+  and coordination. There is one Jenkins Master server, and many Jenkins Slaves that
+  are linked to the master for discovery and and workload negotiation.
+
+  In this application, the Jenkins Master's HTTP port is mapped to
+  port 9080. To access the application, Port 9080 will need to be
+  available. In Virtualbox, this means going into the machine
+  settings network tab, clicking "Port Forwarding" and adding a
+  forward from 127.0.0.1:9080 to Guest:9080.
+
+  This template defaults to creating a Jenkins Master and two Jenkins Slaves. Adding
+  additional slaves involves a few steps.
+
+  1. In Panamax, click the "Add a Service" button in the "Jenkins with Slaves" Application
+  1. In the "Search Images" dialog, search for "ryfow/docker-jenkins-slave"
+  1. Click the "Add to App" link in the images results
+  1. Click on the newly-formed Service in the "Application Services" sectino of the Application
+  1. Add a "Service Link," mapping "ryfow_jenkins_latest" to "jenkins"
+  1. Add an Environment Variable mapping "SLAVE_NAME" to your new Jenkins Slave's name.
+  1. Add the slave in Jenkins via the "Manage Jenkins" > "Manage Nodes" interface, making
+     sure that the Slave Name matches the Panamax SLAVE_NAME environment variable.
+  
+images:
+- name: ryfow_jenkins_latest
+  source: ryfow/jenkins:latest
+  type: Default
+  ports:
+  - host_port: '9080'
+    container_port: '8080'
+    proto: TCP
+  volumes:
+  - host_path: "/var/jenkins"
+    container_path: "/var/jenkins_home"
+- name: ryfow_docker-jenkins-slave
+  source: ryfow/docker-jenkins-slave:latest
+  type: Default
+  links:
+  - service: ryfow_jenkins_latest
+    alias: jenkins
+  environment:
+  - variable: SLAVE_NAME
+    value: slave1
+- name: ryfow_docker-jenkins-slave_1
+  source: ryfow/docker-jenkins-slave:latest
+  type: Default
+  links:
+  - service: ryfow_jenkins_latest
+    alias: jenkins
+  environment:
+  - variable: SLAVE_NAME
+    value: slave2
