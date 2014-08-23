@@ -12,7 +12,7 @@ documentation: |-
   and coordination. There is one Jenkins Master server, and many Jenkins Slaves that
   are linked to the master for discovery and and workload negotiation.
 
-  Details about Jenkins CI can be found at http://jenkins-ci.org/
+  Details about Jenkins CI can be found at [jenkins-ci.org](http://jenkins-ci.org/)
 
   Installation Details
   --------------------
