@@ -12,6 +12,8 @@ documentation: |-
   and coordination. There is one Jenkins Master server, and many Jenkins Slaves that
   are linked to the master for discovery and and workload negotiation.
 
+  Details about Jenkins CI can be found at http://jenkins-ci.org/
+
   Installation Details
   --------------------
 
@@ -21,7 +23,7 @@ documentation: |-
      Host machine. You'll need to map that port to be able to access
      the Jenkins web application. Once the application is running and
      the port is mapped, Jenkins will be available via web browser at
-     http://\<localhost or IP\>:9080/
+     `http://<localhost or Panamax IP>:9080/`
   1. The slaves will fail to boot up if it takes too long for docker to
      pull and start the `ryfow/jenkins`. I like to run
      `docker pull ryfow/jenkins:0.2` on my Panamax instance before trying
@@ -53,7 +55,7 @@ documentation: |-
   Verifying Successful Launch
   ---------------------------
 
-  If everything is running correctly, `http://\<localhost or IP\>:9080` will bring up the Jenkins
+  If everything is running correctly, `http://<localhost or Panamax IP>:9080` will bring up the Jenkins
   web interface and there will be four idle executors listed in the "Build Executor Status"
   section. Two "master" executors, one "slave1" executor, and one "slave2" executor.
 
