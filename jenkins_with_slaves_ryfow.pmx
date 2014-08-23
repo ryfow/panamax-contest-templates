@@ -25,7 +25,7 @@ documentation: |-
      the port is mapped, Jenkins will be available via web browser at
      `http://<localhost or Panamax IP>:9080/`
   1. The slaves will fail to boot up if it takes too long for docker to
-     pull and start the `ryfow/jenkins`. I like to run
+     pull and start the `ryfow/jenkins` image. I like to run
      `docker pull ryfow/jenkins:0.2` on my Panamax instance before trying
      to run the Panamax application. Rebuilding the app after
      jenkins_master comes up also works.
@@ -40,9 +40,9 @@ documentation: |-
   1. In the "Search Images" dialog, search for "ryfow/docker-jenkins-slave"
   1. Click the "Add to App" link in the images results
   1. Click on the newly formed Service in the "Application Services" section of the Application
-  1. Add a "Service Link," mapping "ryfow_jenkins_latest" to "jenkins"
+  1. Add a "Service Link," mapping "jenkins_master" to "jenkins"
   1. Add an Environment Variable mapping "SLAVE_NAME" to your new Jenkins Slave's name.
-  1. Add the slave in Jenkins via the "Manage Jenkins" > "Manage Nodes" interface, making
+  1. Add the Slave in Jenkins via the "Manage Jenkins" > "Manage Nodes" interface, making
      sure that the Slave Name matches the Panamax SLAVE_NAME environment variable.
 
   Volumes and Configuration
