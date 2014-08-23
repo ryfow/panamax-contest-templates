@@ -1,5 +1,5 @@
 ---
-name: Jenkins
+name: Jenkins_ryfow
 description: Jenkins Continuous Integration Server
 keywords: jenkins
 type: Java
